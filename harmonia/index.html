@@ -9,6 +9,21 @@
   <!-- AOS CSS (for animations) -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
+    /* Define Keyframe Animations for custom scroll animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Add class to trigger animation */
+    .animate__fadeInUp {
+      animation: fadeInUp 1s ease-out forwards;
+    }
     /* Additional custom styles */
     .hero-section {
       background: url('images/mayan-hero.jpg') no-repeat center center;
@@ -49,7 +64,7 @@
       <div class="hero-text-box">
         <h1>Celebrate the Richness of Mayan Culture</h1>
         <p>Discover the ancient heritage that shaped the modern world</p>
-        <a href="#culture" class="btn btn-light">Learn More</a>
+        <a href="#intro" class="btn btn-light" id="learn-more">Learn More</a>
       </div>
     </div>
   </section>
@@ -139,6 +154,16 @@
       duration: 1000, // Duration of the animation
       easing: 'ease-in-out', // Animation easing type
       once: true // Whether the animation should only happen once
+    });
+    // Smooth Scroll to #intro section
+    document.getElementById('learn-more').addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent the default action (jump to anchor link)
+      
+      // Scroll to the #intro section smoothly
+      document.querySelector('#intro').scrollIntoView({
+        behavior: 'smooth',  // Smooth scroll
+        block: 'start'       // Align the target to the top of the page
+      });
     });
   </script>
 </body>
